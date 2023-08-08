@@ -23,7 +23,7 @@ Route::get('/', function () {
     //$users = DB::table('users')->first();
     $users = User::where('id', 1)->first();
 
-
+    //test
     //insert dbfacade, query builder and eloquen
     //$user = DB:: insert ('insert into users (name, email, password) values (?,?,?)', [
     // 'Jules',
