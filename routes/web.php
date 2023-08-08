@@ -21,7 +21,7 @@ Route::get('/', function () {
     //$users = DB:: select ("Select * from users");
     // $users = DB::table('users')->get();
     //$users = DB::table('users')->first();
-    //$users = User::where('id', 1)->first();
+    $users = User::where('id', 1)->first();
 
 
     //insert dbfacade, query builder and eloquen
