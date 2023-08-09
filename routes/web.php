@@ -16,28 +16,30 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
+     return view('welcome');
     //select or return dbfacade, query builder and eloquent
     //$users = DB:: select ("Select * from users");
     // $users = DB::table('users')->get();
-    //$users = DB::table('users')->first();
-    $users = User::where('id', 1)->first();
+    // $users = DB::table('users')->first();
+    //$users = User::where('id', 1)->first();
+    //$users = User::all();
+    // $users = User::find(16);
 
     //test
     //insert dbfacade, query builder and eloquen
-    //$user = DB:: insert ('insert into users (name, email, password) values (?,?,?)', [
+    // $users = DB:: insert ('insert into users (name, email, password) values (?,?,?)', [
     // 'Jules',
-    // 'carmelomarilag@yahoo.com',
+    // 'carmelomarilag4@yahoo.com',
     // 'password',
-    //]);
-    //$users = DB::table('users')->insert([
+    // ]);
+    // $users = DB::table('users')->insert([
     //    'name' => 'jules',
-    //    'email' => 'jules@yahoo.com',
+    //    'email' => 'jules1@yahoo.com',
     //    'password' => 'password',
-    //]);
+    // ]);
     // $users =User::create([
     //     'name' => 'jules',
-    //     'email' => 'jules@yahoo.com',
+    //     'email' => '12sdfsd12asd312jules121234@yahoo.com',
     //     'password' => 'password',
     // ]);
 
@@ -62,7 +64,7 @@ Route::get('/', function () {
     // $users = User::find(4);
     // $users->delete();
     
-   dd($users);
+//    dd($users->name);
 });
 
 Route::get('/dashboard', function () {
