@@ -11,6 +11,20 @@
         </p>
     </header>
 
+    <form action = "{{ route('profile.avatar.ai') }}" method ="post" class = "mt-4">
+    @csrf
+        <p class = "mt-1 text-sm text-gray-600 dark:text-gray-400">
+         Generate avatar from ai
+        </p>
+
+        <x-primary-button>Generate Avatar</x-primary-button>
+
+    </form>
+
+    <p class = "my-4 text-sm text-gray-600 dark:text-gray-400">
+        Or
+    </p>
+
 
     @if (session('message'))
     <div class="text-red-500">
@@ -21,7 +35,7 @@
     @method('patch')
     @csrf
         <div>
-            <x-input-label for="name" value="Avatar" />
+            <x-input-label for="name" value="Upload Avatar from Computer" />
             <x-text-input id="avatar" name="avatar" type="file" class="mt-1 block w-full" 
             :value="old('avatar', $user->avatar)" 
              autofocus autocomplete="avatar" />

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use OpenAI\Laravel\Facades\OpenAI;
+use Laravel\Socialite\Facades\Socialite;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,20 +78,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::patch('/profile/avatar', [AvatarController::class, 'update'])->name('profile.avatar');
+    Route::post('/profile/avatar/ai', [AvatarController::class, 'generate'])->name('profile.avatar.ai');
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('openai', function(){
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
 
-    $result = OpenAI::images()->create([
-        "prompt" => "create avatar for user with name",
-        'n'      => 1,
-        'size'   => "256x256",
-
-
-    ]);
-
-    return response([$result->data[0]->url]);
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('github')->user();
+    dd($user);
+    // $user->token
 });
