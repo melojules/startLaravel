@@ -85,7 +85,7 @@ require __DIR__.'/auth.php';
 Route::get('openai', function(){
 
     $result = OpenAI::images()->create([
-        "prompt" => "create avatar for user with name".auth()->user()->name,
+        "prompt" => "create avatar for user with name",
         'n'      => 1,
         'size'   => "256x256",
 
