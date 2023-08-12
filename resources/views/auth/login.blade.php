@@ -1,10 +1,8 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -23,7 +21,6 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
@@ -44,4 +41,11 @@
             </x-primary-button>
         </div>
     </form>
+        <!-- Login with -->
+        <form method= "post" action = "{{ route('login.github') }}" >
+            @csrf
+            <x-primary-button class="block mt-1 w-full" > 
+                Login with GitHub
+            </x-primary-button>
+        </form>
 </x-guest-layout>

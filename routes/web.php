@@ -83,14 +83,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/avatar/ai', [AvatarController::class, 'generate'])->name('profile.avatar.ai');
 });
 
+
 require __DIR__.'/auth.php';
 
-Route::get('/auth/redirect', function () {
+Route::post('/auth/redirect', function () {
     return Socialite::driver('github')->redirect();
-});
+})->name('login.github');
 
 Route::get('/auth/callback', function () {
     $user = Socialite::driver('github')->user();
-    dd($user);
+    $user = User::firstOrCreate(['email'=>$user->email],[
+        'name' => $user->name,
+        'password' => 'password',
+    ]);
+    Auth::login($user);
+    return redirect('/dashboard');
     // $user->token
 });
