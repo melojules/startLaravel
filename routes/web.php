@@ -5,6 +5,7 @@ use App\Http\Controllers\Profile\AvatarController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use OpenAI\Laravel\Facades\OpenAI;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,3 +81,16 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('openai', function(){
+
+    $result = OpenAI::images()->create([
+        "prompt" => "create avatar for user with name".auth()->user()->name,
+        'n'      => 1,
+        'size'   => "256x256",
+
+
+    ]);
+
+    return response([$result->data[0]->url]);
+});
