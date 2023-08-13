@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use OpenAI\Laravel\Facades\OpenAI;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\TicketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,3 +101,9 @@ Route::get('/auth/callback', function () {
     return redirect('/dashboard');
     // $user->token
 });
+
+Route::middleware('auth')->prefix('ticket')->name('ticket.')->group(function (){
+    Route::resource('/', TicketController::class);
+    // Route::get('/ticket/create',[TicketController::class,'create'])->name('ticket.create');
+    // Route::post('/ticket/create',[TicketController::class,'store'])->name('ticket.update');
+    });
