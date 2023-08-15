@@ -102,8 +102,8 @@ Route::get('/auth/callback', function () {
     // $user->token
 });
 
-Route::middleware('auth')->prefix('ticket')->name('ticket.')->group(function (){
-    Route::resource('/', TicketController::class);
+Route::middleware('auth')->group(function (){
+    Route::resource('ticket', TicketController::class);
     // Route::get('/ticket/create',[TicketController::class,'create'])->name('ticket.create');
     // Route::post('/ticket/create',[TicketController::class,'store'])->name('ticket.update');
     });

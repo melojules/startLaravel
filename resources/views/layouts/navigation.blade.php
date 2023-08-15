@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="hidden space-x-32 sm:-my-px sm:ml-40 sm:flex">
-            <x-nav-link href="{{ route('ticket.create') }}">
+            <x-nav-link href="{{ route('ticket.index') }}">
                 Support Ticket
             </x-nav-link>
             </div>
