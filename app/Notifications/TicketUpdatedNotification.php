@@ -41,6 +41,6 @@ class TicketUpdatedNotification extends Notification
                     ->action('Check Ticket', route('ticket.show', $this->ticket->id))
                     ->line('Thank you for using our application!');
     }
-
+   
    
 }
