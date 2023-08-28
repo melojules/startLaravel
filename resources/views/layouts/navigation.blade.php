@@ -15,12 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('ticket.index') }}">
+                    Support Ticket
+                    </x-nav-link>
                 </div>
-            </div>
-            <div class="hidden space-x-32 sm:-my-px sm:ml-40 sm:flex">
-            <x-nav-link href="{{ route('ticket.index') }}">
-                Support Ticket
-            </x-nav-link>
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

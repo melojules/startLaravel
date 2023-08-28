@@ -20,7 +20,7 @@ use App\Http\Controllers\TicketController;
 */
 
 Route::get('/', function () {
-     return view('welcome');
+     return view('auth\login');
     //select or return dbfacade, query builder and eloquent
     //$users = DB:: select ("Select * from users");
     // $users = DB::table('users')->get();
@@ -107,3 +107,5 @@ Route::middleware('auth')->group(function (){
     // Route::get('/ticket/create',[TicketController::class,'create'])->name('ticket.create');
     // Route::post('/ticket/create',[TicketController::class,'store'])->name('ticket.update');
     });
+Route::middleware('auth')->group(function (){
+    Route::resource('chat', chatController::class);});
